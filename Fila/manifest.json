@@ -1,0 +1,19 @@
+{
+  "name": "SaiposFila",
+  "author": {
+    "name": "Jonathan Silva",
+    "email": "jonathan.silva@3wdev.tech"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": {
+    "support": {
+      "ticket_sidebar": {
+        "url": "assets/iframe.html",
+        "flexible": true
+      }
+    }
+  },
+  "version": "1.0.0",
+  "frameworkVersion": "2.0"
+}
