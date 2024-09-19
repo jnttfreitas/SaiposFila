@@ -3,7 +3,7 @@ Este é um aplicativo Zendesk que atribui automaticamente o ticket mais antigo n
 
 ## Tecnologias Usadas
 Frontend: HTML, CSS, JavaScript
-Frameworks/Libraries: Bootstrap 4, Handlebars.js, Zendesk App Framework SDK
+Frameworks/Libraries: Bootstrap 4, Zendesk App Framework SDK
 
 ### Funcionalidades
 Exibir Contagem de Tickets: Mostra a quantidade de tickets na fila do grupo.
