@@ -14,27 +14,34 @@ var client; // Definido como global
 document.addEventListener('DOMContentLoaded', function() {
     client = ZAFClient.init(); // Inicializa o cliente e define como global
 
-    // Exibir a quantidade de tickets na fila
+    // Exibir a quantidade de tickets na fila definida
+    fetchTicketCountFromView();
+    
+    // Inicializar o botão de atribuição
+    initializeButton();
+});
+
+// Função para buscar e exibir a quantidade de tickets na fila
+function fetchTicketCountFromView() {
+    const viewId = '28426766099220'; // ID da fila Aguardando - N1
+
     client.request({
-        url: '/api/v2/tickets.json',  // Endpoint para obter todos os tickets
+        url: `/api/v2/views/${viewId}/tickets.json`,
         type: 'GET',
-        dataType: 'json'
+        dataType: 'json',
     }).then(function(data) {
         console.log('Resposta da API:', data); // Log para depuração
         if (data.tickets && data.tickets.length > 0) {
             var ticketCount = data.tickets.length;
-            document.getElementById('ticket-count').textContent = 'Tickets na fila: ' + ticketCount;
+            document.getElementById('ticket-count').textContent = 'Tickets aguardando - N1 📣: ' + ticketCount;
         } else {
-            document.getElementById('ticket-count').textContent = 'Nenhum ticket na fila.';
+            document.getElementById('ticket-count').textContent = 'Nenhum ticket aguardando - N1 📣.';
         }
     }).catch(function(err) {
-        console.error('Erro ao obter tickets:', err);
+        console.error('Erro ao obter tickets da fila:', err);
         document.getElementById('ticket-count').textContent = 'Erro ao carregar a fila de tickets.';
     });
-
-    // Inicializar o botão
-    initializeButton();
-});
+}
 
 // Função para inicializar o botão
 function initializeButton() {
@@ -48,36 +55,32 @@ function initializeButton() {
 
 // Função chamada quando o botão é clicado
 function handleButtonClick() {
-    client.get('currentUser').then(function(userData) {
-        const groupId = userData.currentUser.groups[0].id; // Obtém o primeiro grupo do agente
-        getOldestUnassignedTicketFromGroup(groupId);
-    }).catch(function(error) {
-        console.error("Erro ao obter o usuário atual:", error);
-        client.invoke('notify', 'Erro ao obter o grupo do agente.', 'error');
-    });
+    assignOldestTicketFromView();
 }
 
-// Função para buscar o ticket mais antigo não atribuído do grupo
-function getOldestUnassignedTicketFromGroup(groupId) {
-    client.invoke('notify', 'Buscando ticket mais antigo não atribuído na fila do grupo...', 'notice');
+// Função para buscar e atribuir o ticket mais antigo não atribuído na fila específica
+function assignOldestTicketFromView() {
+    const viewId = '28426766099220'; // ID da fila definida
+
+    client.invoke('notify', 'Buscando ticket mais antigo na fila...', 'notice');
     client.request({
-      url: `/api/v2/search.json?query=type:ticket status<closed group_id:${groupId} assignee:none order_by:created sort:asc`,
-      type: 'GET',
-      dataType: 'json',
+        url: `/api/v2/views/${viewId}/tickets.json`,
+        type: 'GET',
+        dataType: 'json',
     }).then(function(data) {
-      if (data.results && data.results.length > 0) {
-        const oldestTicket = data.results[0]; // Pega o ticket mais antigo
-        console.log("Ticket mais antigo não atribuído encontrado:", oldestTicket);
-  
-        // Atribuir o ticket ao agente
-        assignTicketToAgent(oldestTicket.id);
-      } else {
-        console.log("Nenhum ticket não atribuído encontrado para o grupo.");
-        client.invoke('notify', 'Nenhum ticket não atribuído encontrado na fila do grupo.', 'error');
-      }
+        if (data.tickets && data.tickets.length > 0) {
+            const oldestTicket = data.tickets[0]; // Pega o ticket mais antigo
+            console.log("Ticket mais antigo encontrado:", oldestTicket);
+
+            // Atribuir o ticket ao agente
+            assignTicketToAgent(oldestTicket.id);
+        } else {
+            console.log("Nenhum ticket encontrado na fila.");
+            client.invoke('notify', 'Nenhum ticket encontrado na fila.', 'error');
+        }
     }).catch(function(error) {
-      console.error("Erro ao buscar os tickets:", error);
-      client.invoke('notify', 'Erro ao buscar tickets do grupo.', 'error');
+        console.error("Erro ao buscar os tickets:", error);
+        client.invoke('notify', 'Erro ao buscar tickets da fila.', 'error');
     });
 }
 

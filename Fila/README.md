@@ -53,7 +53,7 @@ Clone o repositório:
 
 
 ###### Licença
-Este projeto está licenciado sob a MIT License.
+Este projeto está licenciado sob a 
 
 # Contato
 Jonathan Silva - jonathan.silva@3wdev.tech
