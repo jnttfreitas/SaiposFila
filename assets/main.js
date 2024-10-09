@@ -3,8 +3,8 @@
  * 
  * Autor: Jonathan Silva
  * Email: jonathan.silva@saipos.com
- * Data: 2024-09-30
- * Versão 3.0.1
+ * Data: 2024-10-09
+ * Versão 3.0.2
  * Descrição:
  * Este aplicativo Zendesk atribui automaticamente o ticket mais antigo não atribuído da fila do grupo ao agente atual.
  */
@@ -153,5 +153,3 @@ function addCommentToTicket(ticketId, agentId) {
         client.invoke('notify', 'Erro ao adicionar comentário ao ticket.', 'error');
     });
 }
-
-document.querySelector("#\\:r1ro\\:--primary-pane > div.sc-rbmcji-0.fvZJku > div > section > div.sc-1j75nax-1.sc-9fnvsr-0.gSpHaW > div.sc-9fnvsr-1.jxhHtY > div.sc-8c77jc-0.fatSvu > div.sc-1ho6spw-0.duLYkQ > div.sc-1ho6spw-1.gPQwvo > div.sc-1ho6spw-3.cpsRYi > button:nth-child(1)")
