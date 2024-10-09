@@ -55,7 +55,7 @@ Clone o repositório:
 
 
 ###### Licença
-Este projeto é Privado para usu do Support Saipos
+Este projeto é Privado para uso do Support Saipos
 
 # Contato
 Jonathan Silva - jonathan.silva@3wdev.tech - jonathan.silva@saipos.com
