@@ -1,0 +1,8 @@
+{
+  "app": {
+    "name": "Saipos Fila",
+    "short_description": "Zendesk Support automatic ticket assignment button.",
+    "long_description": "This Zendesk app automatically assigns the oldest unassigned ticket in the group queue to the current agent.",
+    "installation_instructions": "Simply click install."
+  }
+}

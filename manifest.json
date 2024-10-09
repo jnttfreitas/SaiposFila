@@ -1,0 +1,25 @@
+{
+  "name": "Saipos Fila",
+  "author": {
+    "name": "Jonathan Silva",
+    "email": "jonathan.silva@saipos.com"
+  },
+  "defaultLocale": "en",
+  "location": {
+    "support": {
+      "top_bar": {
+        "url": "assets/iframe.html"
+      },
+      "ticket_sidebar": {
+        "url": "assets/iframe.html"
+      }
+    }
+  },
+  "version": "3.0.2",
+  "frameworkVersion": "2.0",
+  "icons": {
+    "26x26": "assets/icon_top_bar.svg",
+    "48x48": "assets/icon_top_bar.svg",
+    "96x96": "assets/icon_top_bar.svg"
+  }
+}
