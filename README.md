@@ -3,11 +3,12 @@ Este é um aplicativo Zendesk que atribui automaticamente o ticket mais antigo n
 
 ## Tecnologias Usadas
 Frontend: HTML, CSS, JavaScript
-Frameworks/Libraries: Bootstrap 4, Handlebars.js, Zendesk App Framework SDK
+Frameworks/Libraries: Zendesk App Framework SDK
 
 ### Funcionalidades
 Exibir Contagem de Tickets: Mostra a quantidade de tickets na fila do grupo.
 Atribuição Automática de Tickets: Atribui o ticket mais antigo não atribuído ao agente atual ao clicar no botão.
+Botão para recarregar a fila.
 
 ### Pré-Requisitos
 Um ambiente Zendesk configurado para usar aplicativos personalizados.
@@ -37,6 +38,7 @@ Clone o repositório:
     Acesse a interface do aplicativo no Zendesk.
     A quantidade de tickets na fila será exibida automaticamente.
     Clique no botão "Atribuir +1" para atribuir o ticket mais antigo não atribuído ao agente atual.
+    Clique no Botão de Recarregar para recarregar a Fila
    
 ###### Contribuição
     Se você deseja contribuir com o projeto, siga estas etapas:
@@ -53,7 +55,9 @@ Clone o repositório:
 
 
 ###### Licença
-Este projeto está licenciado sob a 
+Este projeto é Privado para uso do Support Saipos
 
 # Contato
-Jonathan Silva - jonathan.silva@3wdev.tech
+Jonathan Silva - jonathan.silva@3wdev.tech - jonathan.silva@saipos.com
+
+
